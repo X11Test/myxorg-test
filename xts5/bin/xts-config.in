@@ -1,6 +1,5 @@
 #!/usr/bin/perl -pi.bak
 
-use 5.10.0;
 use warnings;
 use strict;
 use Sys::Hostname;
@@ -136,10 +135,16 @@ BEGIN
 
 	$::vars{"XT_PIXMAP_DEPTHS"} =~ s/,?\s+/ /g;
 
-	given ($::vars{XT_DOES_BACKING_STORE})
+	if ($::vars{XT_DOES_BACKING_STORE} =~ /yes/i)
 	{
-		$::vars{XT_DOES_BACKING_STORE} = 2 when (/yes/i);
-		$::vars{XT_DOES_BACKING_STORE} = 1 when (/when/i);
+		$::vars{XT_DOES_BACKING_STORE} = 2;
+	}
+	elsif ($::vars{XT_DOES_BACKING_STORE} =~ /no/i)
+	{
+		$::vars{XT_DOES_BACKING_STORE} = 1;
+	}
+	else
+	{
 		$::vars{XT_DOES_BACKING_STORE} = 0;
 	}
 
