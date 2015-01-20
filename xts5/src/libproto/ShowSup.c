@@ -581,7 +581,7 @@ int	format;
 		int     i;
 		
 		if (nval > 0) {
-		    valuePtr = (CARD32 *) ((CARD32 *) rp + size);
+		    valuePtr = (CARD32 *) ((CARD8 *) rp + size);
 		    for (i = 0; i < nval; i++) {
 			Log_Some("\tfontprop %d, name = 0x%lx, value = 0x%lx\n", i, *valuePtr, *(valuePtr+1));
 			valuePtr += 2;
@@ -598,7 +598,7 @@ int	format;
 		int     i;
 
 		if (nval > 0) {
-		    valuePtr = (CARD16 *) ((CARD16 *) rp + size);
+		    valuePtr = (CARD16 *) ((CARD8 *) rp + size);
 		    for (i = 0; i < nval; i++) {
 			Log_Some("\tcharinfo %d, left-side-bearing = %d, right-side-bearing = %d, character-width = %d, ascent = %d, descent = %d, attributes = 0x%x\n", i, *valuePtr, *(valuePtr+1), *(valuePtr+2), *(valuePtr+3), *(valuePtr+4), *(valuePtr+5));
 			valuePtr += 6;
