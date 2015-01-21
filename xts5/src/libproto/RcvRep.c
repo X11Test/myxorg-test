@@ -374,6 +374,10 @@ int client;   /* */
 		wbcopy(rbp,valuePtr, 32);
 		break;
 	case X_QueryFont:
+		if (rp->generic.length < 7) {
+		    Length_Error(max(bytes_there,calculated_length<<2),client,rp,type,"QueryFont",7);
+		    break;
+		}
 		valuePtr =  (unsigned char *) &(((xQueryFontReply *)rp)->minBounds);
 		Unpack_Shorts((unsigned short *) valuePtr, &rbp, 6, needswap);
 		rbp += 4;
