@@ -377,10 +377,15 @@ unsigned long	i;
 		if(i == maxsize(vp))
 			CHECK;
 
-		disp2 = opendisplay();
+		disp2 = XOpenDisplay(config.display);
+		if (!disp2) {
+			delete("XOpenDisplay() failed.");
+			return;
+		}
 
 		if(XAllocColor(disp2, colormap, &testcol) == False) {
 			delete("XAllocColor() failed to allocate a r/o cell for a second client.");
+			XCloseDisplay(disp2);
 			return;
 		} else
 			CHECK;
@@ -397,6 +402,7 @@ unsigned long	i;
 
 		if(XAllocColor(display, colormap, &testcol) == False) {
 			delete("XAllocColor() failed to allocate a r/o cell");
+			XCloseDisplay(disp2);
 			return;
 		} else
 			CHECK;
@@ -406,6 +412,8 @@ unsigned long	i;
 		XCALL;
 		if(geterr() == BadAccess)
 			CHECK;
+
+		XCloseDisplay(disp2);
 	}
 
 	CHECKPASS(5*nvinf());
