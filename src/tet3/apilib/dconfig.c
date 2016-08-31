@@ -144,7 +144,7 @@ TET_IMPORT void tet_config()
 	/* determine the config file name from the environment */
 	file = getenv("TET_CONFIG");
 	if (file == NULL || *file == '\0')
-		return;
+		file = TET_DEFAULT_CONFIG;
 
 	/* open the file */
 	if ((fp = fopen(file, "r")) == (FILE *) 0) {

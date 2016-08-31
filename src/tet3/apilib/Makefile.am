@@ -1,4 +1,5 @@
-AM_CPPFLAGS = -I$(srcdir)/../inc -I$(top_srcdir)/include
+AM_CPPFLAGS = -I$(srcdir)/../inc -I$(top_srcdir)/include \
+	-DTET_DEFAULT_CONFIG=\"$(abs_top_builddir)/xts5/tetexec.cfg\"
 
 # libapi_s is the shared portion of the library
 xtslibdir = $(libexecdir)/xts5
