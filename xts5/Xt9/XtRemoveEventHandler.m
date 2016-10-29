@@ -425,13 +425,13 @@ int invoked = 0;
 	XtAppMainLoop(app_ctext);
 	LKROF(pid2, AVSXTTIMEOUT-2);
 	tet_infoline("TEST: Error message was not emitted");
-	if (avs_get_event(3) != 0) {
-		sprintf(ebuf, "ERROR: Error message handler was invoked %d times");
+	if (invoked = avs_get_event(3) != 0) {
+		sprintf(ebuf, "ERROR: Error message handler was invoked %d times", invoked);
 		tet_infoline(ebuf);
 		tet_result(TET_FAIL);
 	}
-	if (avs_get_event(2) != 0) {
-		sprintf(ebuf, "ERROR: Warning message handler was invoked %d times");
+	if (invoked = avs_get_event(2) != 0) {
+		sprintf(ebuf, "ERROR: Warning message handler was invoked %d times", invoked);
 		tet_infoline(ebuf);
 		tet_result(TET_FAIL);
 	}
@@ -491,13 +491,13 @@ int invoked = 0;
 		tet_result(TET_FAIL);
 	}
 	tet_infoline("TEST: Error message was not emitted");
-	if (avs_get_event(3) != 0) {
-		sprintf(ebuf, "ERROR: Error message handler was invoked %d times");
+	if (invoked = avs_get_event(3) != 0) {
+		sprintf(ebuf, "ERROR: Error message handler was invoked %d times", invoked);
 		tet_infoline(ebuf);
 		tet_result(TET_FAIL);
 	}
-	if (avs_get_event(2) != 0) {
-		sprintf(ebuf, "ERROR: Warning message handler was invoked %d times");
+	if (invoked = avs_get_event(2) != 0) {
+		sprintf(ebuf, "ERROR: Warning message handler was invoked %d times", invoked);
 		tet_infoline(ebuf);
 		tet_result(TET_FAIL);
 	}
