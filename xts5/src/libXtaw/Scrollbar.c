@@ -272,7 +272,7 @@ static float FractionLoc(w, x, y)
 }
 
 
-static FillArea(w, top, bottom, thumb)
+static void FillArea(w, top, bottom, thumb)
   ScrollbarWidget w;
   Position top, bottom;
   int thumb;
