@@ -81,7 +81,7 @@ pid_t pid2;
 	XtRealizeWidget(topLevel);
 	tet_infoline("TEST: Verify the default");
 	if ((value_good = XtGetSelectionTimeout()) != (unsigned int)5000){
-		sprintf(ebuf, "ERROR: Expected 5000 received %d", value_good);
+		sprintf(ebuf, "ERROR: Expected 5000 received %lu", value_good);
 		tet_infoline(ebuf);
 		tet_result(TET_FAIL);
 	}
@@ -89,7 +89,7 @@ pid_t pid2;
 	XtSetSelectionTimeout((unsigned int )10000);
 	tet_infoline("TEST: selectionTimeout is 10000 milliseconds");
 	if ((value_good = XtGetSelectionTimeout()) != (unsigned int)10000){
-		sprintf(ebuf, "ERROR: Expected 10000 received %d", value_good);
+		sprintf(ebuf, "ERROR: Expected 10000 received %lu", value_good);
 		tet_infoline(ebuf);
 		tet_result(TET_FAIL);
 	}
