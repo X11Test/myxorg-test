@@ -209,7 +209,7 @@ Xlib returns to what Xt returns*/
 	for (i = min_keycode; i <= max_keycode; i++ ) {
 		if (keysym_good[i] == NoSymbol) {
 			if (keysym_return[i] != NoSymbol) {
-				sprintf(ebuf, "ERROR: min_keycode + %d should be NoSymbol, is %ld", (long)keysym_return[i]);
+				sprintf(ebuf, "ERROR: min_keycode + %d should be NoSymbol, is %ld", i, (long)keysym_return[i]);
 				tet_infoline(ebuf);
 				tet_result(TET_FAIL);
 			}
