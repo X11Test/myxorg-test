@@ -130,13 +130,6 @@ int argcount;
 		tet_result(TET_UNRESOLVED);
 		exit(0);
 	}
-	
-	/*
-	 * Wait for the server to reset before trying to connect.
-	 * (Otherwise a connect attempt could succeed at the beginning
-	 * of the reset, and the connection broken as part of the reset.)
-	 */
-	sleep(2);
 
 	for (i = 0; i < (config.reset_delay *2)+1; i++) {
 		display = XtOpenDisplay(
