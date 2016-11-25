@@ -105,7 +105,7 @@ void mepcomment(char *buf);
 FILE *nextfile(struct mclist *sources);
 void outcopy(char *file);
 FILE *cretmpfile(char *file, char **crefile);
-int outfile(FILE *fp);
+void outfile(FILE *fp);
 int remfiles(void);
 int includefile(char *file, char *bp);
 void filetemp(char *name);

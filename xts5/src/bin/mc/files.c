@@ -236,7 +236,7 @@ char *tmpfile;
  * Combine all the files in the right order onto
  * stdout.
  */
-outfile(fp)
+void outfile(fp)
 FILE	*fp;
 {
 static FILE	*fout;
