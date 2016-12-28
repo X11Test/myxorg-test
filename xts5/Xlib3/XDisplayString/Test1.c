@@ -148,13 +148,15 @@ Display		*display;
 
 	if((dispstr = getenv("DISPLAY")) == NULL) {
 		delete("Environment variable DISPLAY is not set.");
-		return;
+		UNRESOLVED;
+		return(False);
 	} else
 		CHECK;
 
 	if((display = XOpenDisplay("")) == (Display *) NULL) {
-		delete("XOpenDisplay() returned NULL.");		
-		return;
+		delete("XOpenDisplay() returned NULL.");
+		UNRESOLVED;
+		return(False);
 	} else
 		CHECK;
 

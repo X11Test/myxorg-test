@@ -156,7 +156,8 @@ XClassHint	rclass_hints;
 
 	if( getenv("RESOURCE_NAME") != (char *)NULL) {
 		delete("RESOURCE_NAME environment variable was set to \"%s\" instead of being undefined.");
-		return;
+		UNRESOLVED;
+		return(False);
 	} else
 		CHECK;
 
@@ -172,7 +173,8 @@ XClassHint	rclass_hints;
 
 	if( XGetClassHint(Dsp, win, &rclass_hints) == 0 ) {
 		delete("XGetClassHints returned zero.");
-		return;
+		UNRESOLVED;
+		return(False);
 	} else
 		CHECK;
 

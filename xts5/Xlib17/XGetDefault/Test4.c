@@ -154,7 +154,8 @@ static	char	*result[]  = { "pVAL_1",    "eVAL_5",    "eVAL_6" };
 
 	if(getenv("XENVIRONMENT") == NULL) {
 		delete("XENVIRONMENT environment variable not set.");
-		return;
+		UNRESOLVED;
+		return(False);
 	} else
 		CHECK;
 

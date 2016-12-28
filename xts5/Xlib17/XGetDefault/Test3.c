@@ -151,7 +151,8 @@ char		*pval="XTest.testval31:pval_a\nXTest.testval32:pval_b\nXTest.testval33:pva
 
 	if(getenv("HOME") == NULL) {
 		delete("Environment variable \"HOME\" is not set.");
-		return;
+		UNRESOLVED;
+		return(False);
 	} else
 		CHECK;
 

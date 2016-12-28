@@ -157,13 +157,15 @@ static	char	*result[]  = { "pVAL_1",    "hVAL_5",    "hVAL_6" , "hVAL_7"};
 
 	if(getenv("XENVIRONMENT") != NULL) {
 		delete("XENVIRONMENT environment variable was set.");
-		return;
+		UNRESOLVED;
+		return(False);
 	} else
 		CHECK;
 
 	if(getenv("HOME") == NULL) {
 		delete("HOME environment variable was not set.");
-		return;
+		UNRESOLVED;
+		return(False);
 	} else
 		CHECK;
 

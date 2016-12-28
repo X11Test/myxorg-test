@@ -156,7 +156,8 @@ char		*str;
 
 	if((dispstr = getenv("DISPLAY")) == NULL) {
 		delete("Environment variable DISPLAY is not set.");
-		return;
+		UNRESOLVED;
+		return(False);
 	} else
 		CHECK;
 

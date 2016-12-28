@@ -149,7 +149,8 @@ Display		*display;
 
 	if((dispstr = getenv("DISPLAY")) == NULL) {
 		delete("Environment variable DISPLAY is not set.");
-		return;
+		UNRESOLVED;
+		return(False);
 	} else
 		CHECK;
 
@@ -163,7 +164,8 @@ Display		*display;
 
 		if(rdispstr == (char *) NULL) {
 			delete("%s() returned NULL.", TestName);
-			return;
+			UNRESOLVED;
+			return(False);
 		} else {
 			CHECK;
 			if(strcmp(rdispstr, dispstr) != 0) {
