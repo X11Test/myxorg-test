@@ -143,6 +143,7 @@ static	int 	Ndepths;
 int 	CurVinf;
 
 static	void	iddebug();
+static	void	uniquify();
 
 /*
  * Start again at the beginning of the list of visual classes.
@@ -202,6 +203,13 @@ XVisualInfo	vi;
 		vi.screen = (flags & VI_WIN)?
 				DefaultScreen(Dsp) : config.alt_screen;
 		Vinfop = XGetVisualInfo(Dsp, VisualScreenMask, &vi, &Nvis);
+
+		/*
+		 * GLX creates a plethora of identical visuals. There is no
+		 * need to test them all, since the core rendering code is very
+		 * probably identical in each case.
+		 */
+		uniquify();
 
 		/*
 		 * For debuging purposes only consider a subset of the available
@@ -377,6 +385,45 @@ int 	nreal = Nvis;
 		idlist = strchr(idlist, ',');
 		if (idlist)
 			idlist++;
+	}
+	free(viptmp);
+}
+
+static void
+uniquify(void)
+{
+XVisualInfo	*viptmp;
+int 	i;
+int 	nreal = Nvis;
+
+	/*
+	 * Copy the original (this is realy only being done this way
+	 * to avoid mixing free and XFree.)
+	 */
+	viptmp = (XVisualInfo*)malloc(nreal * sizeof(XVisualInfo));
+	if (viptmp == 0)
+		return;
+	for (i = 0; i < nreal; i++)
+		viptmp[i] = Vinfop[i];
+
+	/*
+	 * Copy back any visual that is different from the previous visual,
+	 * keeping count of found ones as we go along.  Note that the list may
+	 * contain visualids for different screens.
+	 */
+	Nvis = 0;
+	for (i = 0; i < nreal; i++) {
+		if (!Nvis ||
+			viptmp[i].screen != Vinfop[Nvis-1].screen ||
+			viptmp[i].depth != Vinfop[Nvis-1].depth ||
+			viptmp[i].class != Vinfop[Nvis-1].class ||
+			viptmp[i].red_mask != Vinfop[Nvis-1].red_mask ||
+			viptmp[i].green_mask != Vinfop[Nvis-1].green_mask ||
+			viptmp[i].blue_mask != Vinfop[Nvis-1].blue_mask ||
+			viptmp[i].colormap_size != Vinfop[Nvis-1].colormap_size ||
+			viptmp[i].bits_per_rgb != Vinfop[Nvis-1].bits_per_rgb) {
+			Vinfop[Nvis++] = viptmp[i];
+		}
 	}
 	free(viptmp);
 }
