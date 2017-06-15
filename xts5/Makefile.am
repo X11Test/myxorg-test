@@ -14,7 +14,7 @@ EXTRA_DIST = bin/xts-config.in bin/xts-run.in lib
 bin_SCRIPTS = bin/xts-config bin/xts-run
 dist_xts5_DATA = tetexec.cfg.in tet_scen tet_code
 xts5dir = $(datadir)/xts5
-check_DATA = tetexec.cfg
+noinst_DATA = tetexec.cfg
 
 xts5docdir = $(xts5dir)/doc
 dist_xts5doc_DATA = doc/release_notes doc/VSW_RELEASE doc/VSW_SPEC
