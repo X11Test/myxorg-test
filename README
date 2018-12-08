@@ -101,3 +101,7 @@ been verified. At this point, XTS results should only be used to notice
 differences between server versions. A failing test may not necessarily
 indicate a bug in the server and a successful test may not necessarily
 indicate correct functioning of the server.
+
+See Also
+--------
+https://www.x.org/wiki/BuildingXtest/

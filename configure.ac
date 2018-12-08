@@ -23,7 +23,7 @@
 AC_PREREQ(2.57)
 AC_INIT([X Test Suite],
         [0.99.1],
-        [http://xorg.freedesktop.org/wiki/BuildingXtest],
+        [https://gitlab.freedesktop.org/xorg/test/xts/issues],
         [xts])
 
 AC_CONFIG_SRCDIR([Makefile.am])
