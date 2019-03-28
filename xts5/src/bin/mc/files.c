@@ -370,8 +370,12 @@ int 	size;
 
 	rp = getenv("TET_ROOT");
 	if (rp == NULL) {
+#ifdef BUILD_TET_ROOT
+		rp = BUILD_TET_ROOT;
+#else
 		fprintf(stderr, "TET_ROOT not set in environment\n");
 		errexit();
+#endif
 	}
 	size = strlen(rp)+strlen(MC_LOC)+strlen(file)+1;
 	path = malloc((size_t)size);
