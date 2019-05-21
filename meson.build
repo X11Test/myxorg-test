@@ -126,6 +126,7 @@ prog_sed = find_program('sed')
 prog_perl = find_program('perl')
 prog_xset = find_program('xset')
 prog_xdpyinfo = find_program('xdpyinfo')
+prog_python = import('python').find_installation('python3')
 
 # For generating man pages
 prog_asciidoc = find_program('asciidoc', required : get_option('manpages'))
@@ -139,6 +140,23 @@ config_h = configure_file(
 add_project_arguments('-DHAVE_CONFIG_H', language : ['c'])
 
 inc_include = include_directories('include', '.') # Add . for config.h
+
+# This could be made to depend on every .m file and then wouldn't need to be
+# always stale. However, that would be tedious or involve a script, which
+# would need to be always stale...
+custom_target(
+  'piglit-profile',
+  command : [
+    prog_python, '@INPUT@', meson.source_root(),
+    join_paths(get_option('prefix'), get_option('libexecdir')),
+    '@OUTPUT@',
+    ],
+  input : ['piglit-profile.py'],
+  output : ['xts.xml.gz'],
+  build_always_stale : true,
+  install : true,
+  install_dir : get_option('libexecdir'),
+)
 
 subdir('src/tet3')
 subdir('xts5')
