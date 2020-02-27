@@ -420,7 +420,6 @@ int	pass=0;
 
 	if(XCheckWindowEvent(display, win, PropertyChangeMask, &ev) == True) {
 		delete("A request was processed for a non-grabbing client.");
-		return;
 	} else
 		CHECK;
 
