@@ -28,7 +28,7 @@ AC_INIT([X Test Suite],
 
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_AUX_DIR(.)
-AM_INIT_AUTOMAKE([dist-bzip2 foreign])
+AM_INIT_AUTOMAKE([dist-xz foreign])
 
 # Initialize X.Org macros
 m4_ifndef([XORG_MACROS_VERSION],
