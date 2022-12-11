@@ -109,10 +109,12 @@ purpose.  It is provided "as is" without express or implied warranty.
 #include <config.h>
 #endif
 
-#include	<stdlib.h>
-#include	"xtest.h"
-#include	<signal.h>
-#include	<unistd.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
+
+#include "xtest.h"
+#include "xtestlib.h"
 
 static int 	Alarm_set;
 
