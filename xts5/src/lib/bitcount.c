@@ -105,6 +105,12 @@ makes no representations about the suitability of this software for any
 purpose.  It is provided "as is" without express or implied warranty.
 */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include "xtestlib.h"
+
 /*
  * Explanation:
  * First we add 32 1-bit fields to get 16 2-bit fields.
