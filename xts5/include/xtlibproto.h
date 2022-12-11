@@ -112,6 +112,10 @@ makes no representations about the suitability of this software for any
 purpose.  It is provided "as is" without express or implied warranty.
 */
 
+#ifdef INPUTEXTENSION
+#include <X11/extensions/XInput.h>
+#endif
+
 void startup(void);
 void cleanup(void);
 void fontstartup(void);
@@ -322,6 +326,12 @@ Status SimulateKeyPressEvent(Display *dpy, KeyCode keycode);
 Status SimulateKeyReleaseEvent(Display *dpy, KeyCode keycode);
 Status SimulateButtonPressEvent(Display  *dpy, unsigned int button);
 Status SimulateButtonReleaseEvent(Display  *dpy, unsigned int button);
+#ifdef INPUTEXTENSION
+Status SimulateDeviceKeyPressEvent(Display *dpy, XDevice *dev, unsigned int button);
+Status SimulateDeviceKeyReleaseEvent(Display *dpy, XDevice *dev, unsigned int button);
+Status SimulateDeviceButtonPressEvent(Display *dpy, XDevice *dev, unsigned int button);
+Status SimulateDeviceButtonReleaseEvent(Display *dpy, XDevice *dev, unsigned int button);
+#endif
 Status CompareCursorWithWindow(Display *dpy, Window window, Cursor cursor);
 Status CompareCurrentWithWindow(Display *dpy, Window window);
 Status SimulateMotionEvent(Display *dpy, int screen, int x, int y);
