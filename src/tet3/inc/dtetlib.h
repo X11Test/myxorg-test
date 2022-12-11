@@ -104,7 +104,6 @@ extern char *tet_remvar PROTOLIST((char *, int));
 extern int tet_remvar_sysid PROTOLIST((char *));
 extern int tet_rmdir PROTOLIST((char *));
 TET_IMPORT_FUNC(char *, tet_strstore, PROTOLIST((char *)));
-extern void tet_tiocnotty PROTOLIST((void));
 extern int tet_unmaperrno PROTOLIST((int));
 extern int tet_unmapsignal PROTOLIST((int));
 

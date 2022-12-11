@@ -39,7 +39,6 @@ libdtet2_la_SOURCES = \
 		mapsig.c \
 		mapstat.c \
 		mkdir.c \
-		notty.c \
 		optarg.c \
 		prerror.c \
 		ptflags.c \

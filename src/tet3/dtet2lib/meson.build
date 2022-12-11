@@ -58,7 +58,6 @@ files_libdtet2 = files(
   'mapsig.c',
   'mapstat.c',
   'mkdir.c',
-  'notty.c',
   'optarg.c',
   'prerror.c',
   'ptflags.c',

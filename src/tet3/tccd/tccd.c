@@ -311,7 +311,7 @@ void tet_ss_initdaemon()
 #endif
 
 	/* detach from the control terminal (if any) */
-	tet_tiocnotty();
+	setsid();
 
 	/* make a log file entry */
 	ts_logstart();

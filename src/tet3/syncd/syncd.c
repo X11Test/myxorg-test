@@ -126,7 +126,7 @@ void tet_ss_initdaemon()
 	tet_si_forkdaemon();
 
 	/* detach from the control terminal */
-	tet_tiocnotty();
+	setsid();
 }
 
 /*
