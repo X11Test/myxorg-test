@@ -111,11 +111,9 @@ MODIFICATIONS:
 **	are protected against multiple inclusion as well
 */
 
-#if defined(__STDC__) || defined(__cplusplus)
 #  ifndef PROTOTYPES
 #    define PROTOTYPES
 #  endif
-#endif
 
 /* function prototype macro */
 #ifdef PROTOTYPES

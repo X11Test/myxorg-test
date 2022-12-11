@@ -133,13 +133,8 @@ static int 	brkval;
 void
 tpstartup()
 {
-#ifdef __STDC__
 extern  int     unexp_err(Display *, XErrorEvent *ep);
 extern  int     io_err(Display *);
-#else
-extern  int     unexp_err();
-extern  int     io_err();
-#endif
 
 	XSetErrorHandler(unexp_err);
 	XSetIOErrorHandler(io_err);

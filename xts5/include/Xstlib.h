@@ -307,19 +307,10 @@ extern CL Xst_clients[MAX_CLIENTS];
  *      type - type of request (e.g. GrabButton)
  */
 
-#ifdef __STDC__
 #define Get_Value_Ptr(rp,type) ((unsigned long *) (((unsigned long) (rp) +   				  sizeof (x##type##Req))))
-#else
-#define Get_Value_Ptr(rp,type) ((unsigned long *) (((unsigned long) (rp) +   				  sizeof (x/**/type/**/Req))))
-#endif
 
-#ifdef __STDC__
 #define Get_Value_Len(rp,type) ((unsigned long) (((rp)->length<<2) - \
 				   sizeof (x##type##Req)))
-#else
-#define Get_Value_Len(rp,type) ((unsigned long) (((rp)->length<<2) - \
-				   sizeof (x/**/type/**/Req)))
-#endif
 
 /*
  *	Test Resource Management

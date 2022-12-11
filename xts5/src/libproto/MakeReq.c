@@ -212,7 +212,6 @@ static int this_client;
  *
  */
 
-#ifdef __STDC__
 #define GetReq(name, req) \
 	bad_len = (Get_Test_Type(this_client) == TOO_LONG) ? \
 		((sizeof(x##name##Req))>>2) : \
@@ -228,23 +227,6 @@ static int this_client;
 	req = (xReq *)Xstmalloc(max(sizeof(x##name##Req), (alloc_len<<2))); \
 	req->length = (sizeof(x##name##Req))>>2;\
 	req->reqType = X_##name
-#else
-#define GetReq(name, req) \
-	bad_len = (Get_Test_Type(this_client) == TOO_LONG) ? \
-		((sizeof(x/**/name/**/Req))>>2) : \
-		( \
-			(Get_Test_Type(this_client) == JUST_TOO_LONG) ? \
-			((sizeof(x/**/name/**/Req))>>2) + 1 : \
-			((sizeof(x/**/name/**/Req))>>2) - 1 \
-		);\
-	if (Get_Test_Type(this_client) == TOO_LONG) \
-		alloc_len = Get_Max_Request(client) + 1; \
-	else \
-		alloc_len = bad_len; \
-	req = (xReq *)Xstmalloc(max(sizeof(x/**/name/**/Req), (alloc_len<<2))); \
-	req->length = (sizeof(x/**/name/**/Req))>>2;\
-	req->reqType = X_/**/name
-#endif
 
 /*
  *	Macro: GetReqExtra - allocates memory for a variable-length request 
@@ -268,7 +250,6 @@ static int this_client;
  *
  */
 
-#ifdef __STDC__
 #define GetReqExtra(name, n, req) \
 	bad_len = (Get_Test_Type(this_client) == TOO_LONG) ? \
 		(sizeof(x##name##Req)+padup(n))>>2 : \
@@ -285,24 +266,6 @@ static int this_client;
 	req->length = (sizeof(x##name##Req)+padup(n))>>2;\
 	req->reqType = X_##name; \
 	valuePtr = (char *) Get_Value_Ptr(req,name)
-#else
-#define GetReqExtra(name, n, req) \
-	bad_len = (Get_Test_Type(this_client) == TOO_LONG) ? \
-		(sizeof(x/**/name/**/Req)+padup(n))>>2 : \
-		( \
-			(Get_Test_Type(this_client) == JUST_TOO_LONG) ? \
-			((sizeof(x/**/name/**/Req)+padup(n))>>2) + 1 : \
-			((sizeof(x/**/name/**/Req))>>2) - 1 \
-		);\
-	if (Get_Test_Type(this_client) == TOO_LONG) \
-		alloc_len = Get_Max_Request(client) + 1; \
-	else \
-		alloc_len = bad_len; \
-	req = (xReq *)Xstmalloc(max((sizeof(x/**/name/**/Req)+padup(n)), (alloc_len<<2))); \
-	req->length = (sizeof(x/**/name/**/Req)+padup(n))>>2;\
-	req->reqType = X_/**/name;\
-	valuePtr = (char *) Get_Value_Ptr(req,name)
-#endif
 
 /*
  *	Macro: GetEmptyReq - allocate memory for a request that takes no 
@@ -324,7 +287,6 @@ static int this_client;
  *
  */
 
-#ifdef __STDC__
 #define GetEmptyReq(name, req) \
 	bad_len = (Get_Test_Type(this_client) == TOO_LONG) ? \
 		1 : \
@@ -339,22 +301,6 @@ static int this_client;
 	req = (xReq *)Xstmalloc(max(sizeof(xReq), (alloc_len<<2))); \
 	req->length = 1;\
 	req->reqType = X_##name
-#else
-#define GetEmptyReq(name, req) \
-	bad_len = (Get_Test_Type(this_client) == TOO_LONG) ? \
-		1 : \
-		( \
-			(Get_Test_Type(this_client) == JUST_TOO_LONG) ? \
-			2 : 0 \
-		);\
-	if (Get_Test_Type(this_client) == TOO_LONG) \
-		alloc_len = Get_Max_Request(client) + 1; \
-	else \
-		alloc_len = bad_len; \
-	req = (xReq *)Xstmalloc(max(sizeof(xReq), (alloc_len<<2))); \
-	req->length = 1;\
-	req->reqType = X_/**/name
-#endif
 
 /* 
    intent:	 allocate memory for a request that takes one parameter,
@@ -369,7 +315,6 @@ static int this_client;
    methods:	 
 */
 
-#ifdef __STDC__
 #define GetResReq(name,rid,req)\
 	bad_len = (Get_Test_Type(this_client) == TOO_LONG) ? \
 		2 : \
@@ -385,23 +330,6 @@ static int this_client;
 	req->length = 2;\
 	req->reqType = X_##name;\
 	((xResourceReq *)req)->id = (rid)
-#else
-#define GetResReq(name,rid,req)\
-	bad_len = (Get_Test_Type(this_client) == TOO_LONG) ? \
-		2 : \
-		( \
-			(Get_Test_Type(this_client) == JUST_TOO_LONG) ? \
-			3 : 1 \
-		);\
-	if (Get_Test_Type(this_client) == TOO_LONG) \
-		alloc_len = Get_Max_Request(client) + 1; \
-	else \
-		alloc_len = bad_len; \
-	req = (xReq *)Xstmalloc(max(sizeof(xResourceReq), (alloc_len<<2)));\
-	req->length = 2;\
-	req->reqType = X_/**/name;\
-	((xResourceReq *)req)->id = (rid)
-#endif
 
 
 #define UNKNOWN_LENGTH 0

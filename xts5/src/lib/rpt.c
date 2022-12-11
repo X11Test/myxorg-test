@@ -124,11 +124,7 @@ purpose.  It is provided "as is" without express or implied warranty.
 #include	"xtestlib.h"
 #include	"tet_api.h"
 
-#ifdef __STDC__
 #include <stdarg.h>
-#else
-#include <varargs.h>
-#endif
 
 #define	LINELEN	1024
 
@@ -144,22 +140,12 @@ purpose.  It is provided "as is" without express or implied warranty.
 /*VARARGS1*/
 
 void
-#ifdef __STDC__
 unsupported(char *mess, ... )
-#else
-unsupported(mess, va_alist)
-char	*mess;
-va_dcl
-#endif
 {
 char	buf[LINELEN];
 va_list args;
 
-#ifdef __STDC__
 	va_start(args, mess);
-#else
-	va_start(args);
-#endif
 
 
 	if (mess && *mess) {
@@ -177,22 +163,12 @@ va_list args;
 /*VARARGS1*/
 
 void
-#ifdef __STDC__
 notinuse(char *mess, ... )
-#else
-notinuse(mess, va_alist)
-char	*mess;
-va_dcl
-#endif
 {
 char	buf[LINELEN];
 va_list args;
 
-#ifdef __STDC__
 	va_start(args, mess);
-#else
-	va_start(args);
-#endif
 
 
 	if (mess && *mess) {
@@ -210,22 +186,12 @@ va_list args;
 /*VARARGS1*/
 
 void
-#ifdef __STDC__
 untested(char *mess, ... )
-#else
-untested(mess, va_alist)
-char	*mess;
-va_dcl
-#endif
 {
 char	buf[LINELEN];
 va_list args;
 
-#ifdef __STDC__
 	va_start(args, mess);
-#else
-	va_start(args);
-#endif
 
 
 	if (mess && *mess) {

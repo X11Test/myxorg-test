@@ -165,10 +165,8 @@ extern "C" {
 /* the following are needed for types used in declarations */
 #include <sys/types.h>
 #define TET_PID_T_DEFINED
-#if defined(__STDC__) || defined(__cplusplus) || defined(_WIN32)
 #  include <time.h>
 #  include <stdarg.h>
-#endif
 #ifdef TET_POSIX_THREADS
 #  include <pthread.h>
 #else /* !TET_POSIX_THREADS */
@@ -231,11 +229,9 @@ extern "C" {
 **	function prototype macros
 */
 
-#if defined(__STDC__) || defined(__cplusplus) || defined(_WIN32)
 #  ifndef TET_PROTOTYPES
 #    define TET_PROTOTYPES
 #  endif
-#endif
 
 #ifdef TET_PROTOTYPES
 #  define TET_PROTOLIST(list)	list

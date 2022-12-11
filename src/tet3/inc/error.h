@@ -65,12 +65,8 @@ TET_NORETURN TET_IMPORT_FUNC_PTR(void, tet_libfatal,
 
 /* test an assertion, exit if it fails */
 TET_IMPORT_ARRAY(char, tet_assertmsg, []);
-#if defined(__STDC__) || defined(_WIN32) || defined(__cplusplus)
 /* assume cpp understands #x whatever the value of __STDC__ */
 #  define ASSERT(x)	if (!(x)) fatal(0, tet_assertmsg, #x); else
-#else
-#  define ASSERT(x)	if (!(x)) fatal(0, tet_assertmsg, "x"); else
-#endif
 
 /* test an assertion only in TETware-Lite */
 #ifdef TET_LITE	/* -LITE-CUT-LINE- */

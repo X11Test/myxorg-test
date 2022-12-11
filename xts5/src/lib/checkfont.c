@@ -150,15 +150,9 @@ struct	fontinfo fontinfo[] = {
 };
 int 	nfontinfo = NELEM(fontinfo);
 
-#ifdef __STDC__
 static int checkprops(XFontStruct *fsp, XFontStruct *good, char *str);
 static XCharStruct *getmetric(XFontStruct *fsp, unsigned int c);
 static int check1prop(XFontStruct *fsp, XFontProp *fp, char *str);
-#else
-static int checkprops();
-static XCharStruct *getmetric();
-static int check1prop();
-#endif
 
 /*
  * Check a XCharStruct item.  FAIL is issued on error, PASS is not.

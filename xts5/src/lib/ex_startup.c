@@ -151,13 +151,8 @@ exec_startup()
 {
 char	*disp;
 char	*cp;
-#ifdef __STDC__
 extern	int 	unexp_err(Display *, XErrorEvent *ep);
 extern	int 	io_err(Display *);
-#else
-extern	int 	unexp_err();
-extern	int 	io_err();
-#endif
 
 	initconfig();
 

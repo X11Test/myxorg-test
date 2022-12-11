@@ -169,11 +169,9 @@ struct	fontinfo	{
  * predicate procedure argument types
  */
 typedef	Bool (*Predicate) (
-#ifdef __STDC__
 	Display *display,
 	XEvent	*error_event,
 	char	*arg
-#endif
 );
 
 /*
@@ -185,38 +183,26 @@ typedef	Bool (*Predicate) (
  */
 typedef union {
 	int	(*a0)(
-#ifdef __STDC__
 		/*
 		 * The arguments have been commented out at present, because
 		 * some compilers have problems with this.
 		 */
 		/* Display *d, int	a */
-#endif
 	);
 	int	(*a1)(
-#ifdef __STDC__
 		/* Display *d, XEvent *e, Predicate p, char *cp */
-#endif
 	);
 	int	(*a2)(
-#ifdef __STDC__
 		/* Display *d, long l, XEvent *ep */
-#endif
 	);
 	int	(*a3)(
-#ifdef __STDC__
 		/* Display *d, XEvent *e */
-#endif
 	);
 	int	(*a4)(
-#ifdef __STDC__
 		/* Display *d, Window w, long l, XEvent *ep */
-#endif
 	);
 	int	(*a5)(
-#ifdef __STDC__
 		/* Display *d */
-#endif
 	);
 } Block_Proc;
 

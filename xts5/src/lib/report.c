@@ -139,11 +139,7 @@ purpose.  It is provided "as is" without express or implied warranty.
 #include	"xtestlib.h"
 #include	"tet_api.h"
 
-#ifdef __STDC__
 #include <stdarg.h>
-#else
-#include <varargs.h>
-#endif
 
 #define	LINELEN	1024
 
@@ -157,22 +153,12 @@ int	purpose_reported = 0;
 /*VARARGS1*/
 
 void
-#ifdef __STDC__
 report(char *fmt, ...)
-#else
-report(fmt, va_alist)
-char	*fmt;
-va_dcl
-#endif
 {
 char	buf[LINELEN];
 va_list	args;
 
-#ifdef __STDC__
 	va_start(args, fmt);
-#else
-	va_start(args);
-#endif
 
 	strcpy(buf, "REPORT: ");
 	vsprintf(buf+strlen("REPORT: "), fmt, args);
@@ -183,12 +169,7 @@ va_list	args;
 }
 
 /*APTEST*/
-#ifdef __STDC__
 void report_purpose(int number)
-#else
-void report_purpose(number)
-int number;
-#endif
 {
 	char	buf[LINELEN];
 
@@ -197,22 +178,12 @@ int number;
 	purpose_reported = number;
 }
 
-#ifdef __STDC__
 void report_assertion(char* line)
-#else
-void report_assertion(line)
-char *line;
-#endif
 {
 	tet_infoline(line);
 }
 
-#ifdef __STDC__
 void report_strategy(char* line)
-#else
-void report_strategy(line)
-char *line;
-#endif
 {
 	char	buf[LINELEN];
 
@@ -223,13 +194,7 @@ char *line;
 /*VARARGS1*/
 
 void
-#ifdef __STDC__
 trace(char *fmt, ...)
-#else
-trace(fmt, va_alist)
-char	*fmt;
-va_dcl
-#endif
 {
 char	buf[LINELEN];
 va_list	args;
@@ -237,11 +202,7 @@ va_list	args;
 	if (config.option_no_trace)
 		return;
 
-#ifdef __STDC__
 	va_start(args, fmt);
-#else
-	va_start(args);
-#endif
 
 	strcpy(buf, "TRACE: ");
 	vsprintf(buf+strlen("TRACE: "), fmt, args);
@@ -253,13 +214,7 @@ va_list	args;
 /*VARARGS1*/
 
 void
-#ifdef __STDC__
 check(char *fmt, ...)
-#else
-check(fmt, va_alist)
-char	*fmt;
-va_dcl
-#endif
 {
 char	buf[LINELEN];
 va_list	args;
@@ -267,11 +222,7 @@ va_list	args;
 	if (config.option_no_check)
 		return;
 
-#ifdef __STDC__
 	va_start(args, fmt);
-#else
-	va_start(args);
-#endif
 
 	strcpy(buf, "CHECK: ");
 	vsprintf(buf+strlen("CHECK: "), fmt, args);
@@ -283,14 +234,7 @@ va_list	args;
 /*VARARGS2*/
 
 void
-#ifdef __STDC__
 debug(int lev, char *fmt, ...)
-#else
-debug(lev, fmt, va_alist)
-int 	lev;
-char	*fmt;
-va_dcl
-#endif
 {
 char	buf[LINELEN];
 va_list	args;
@@ -298,11 +242,7 @@ va_list	args;
 	if (lev > DebugLevel)
 		return;
 
-#ifdef __STDC__
 	va_start(args, fmt);
-#else
-	va_start(args);
-#endif
 
 	strcpy(buf, "DEBUG: ");
 	vsprintf(buf+strlen("DEBUG: "), fmt, args);
@@ -321,22 +261,12 @@ va_list	args;
 /*VARARGS1*/
 
 void
-#ifdef __STDC__
 tccabort(char *fmt, ...)
-#else
-tccabort(fmt, va_alist)
-char	*fmt;
-va_dcl
-#endif
 {
 char	buf[LINELEN];
 va_list	args;
 
-#ifdef __STDC__
 	va_start(args, fmt);
-#else
-	va_start(args);
-#endif
 
 	if (purpose_reported == 0)
 		report_purpose((tet_thistest  == 0) ? 1: tet_thistest);

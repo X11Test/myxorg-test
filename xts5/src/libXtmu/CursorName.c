@@ -90,11 +90,7 @@ SOFTWARE.
 #include <X11/Xmu/CurUtil.h>
 #include <X11/cursorfont.h>
 
-#if __STDC__
 #define Const const
-#else
-#define Const /**/
-#endif
 
 #if NeedFunctionPrototypes
 int XmuCursorNameToIndex (_Xconst char *name)

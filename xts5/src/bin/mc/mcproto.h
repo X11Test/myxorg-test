@@ -67,7 +67,6 @@ revisions cannot be separated from the freely copyable material, the net
 result is that use of this software is governed by the ApTest copyright.
 */
 
-#if __STDC__ == 1
 
 void mcstart(char *buf);
 void mcend(char *buf);
@@ -160,98 +159,4 @@ char *name10lc(char *name);
 int main(int  argc, char **argv);
 char *strinstr(char *s1, char *s2);
 
-#else
-
-void mcstart();
-void mcend();
-void mccopyright();
-void mcheader();
-int defargnames();
-void mcassertion();
-int assertfill();
-int joinpunct();
-void mcstrategy();
-void mccode();
-void mcexterncode();
-int funcstart();
-int funcend();
-int doxcall();
-void mcdefassertion();
-void mcincstart();
-void mcincend();
-int hashcmd();
-int doif();
-int doelse();
-int doendif();
-void defargtype();
-int errtext();
-int valerror();
-int valerrdefs();
-int erralternates();
-int errcode();
-void mepcopyright();
-void mepecho();
-void mepstart();
-void mepend();
-void mepset();
-void mepcomment();
-FILE *nextfile();
-void outcopy();
-FILE *cretmpfile();
-int outfile();
-int remfiles();
-int includefile();
-void filetemp();
-char *mcpath();
-int gccomps();
-void macopyright();
-void maheader();
-void maassertion();
-void madefassertion();
-void mastart();
-void maend();
-void macomment();
-int main();
-char *newline();
-int putbackline();
-void expandxname();
-int err();
-int errexit();
-char *mcstrdup();
-char *strinstr();
-int isassertwanted();
-void mmstart();
-void mmend();
-void mmcopyright();
-void mmheader();
-void mmmake();
-void mmcfiles();
-void mmincstart();
-struct	mclist *createmclist();
-struct	mclist *addmclist();
-char *getmclistitem();
-void mascopyright();
-void masheader();
-void masassertion();
-void masstrategy();
-void masdefassertion();
-void masstart();
-void masend();
-int dosections();
-int assertion();
-void do1sec();
-int dohook();
-void skip();
-void echo();
-void echon();
-void dodefaults();
-int setcmd();
-char	*name12();
-char *name12lc();
-char *name10();
-char *name10lc();
-int main();
-char *strinstr();
-
-#endif
 

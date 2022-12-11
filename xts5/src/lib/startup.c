@@ -184,13 +184,8 @@ char	*disp;
 char	*cp;
 /* APTETS extern	char	*TestName; */
 extern	struct	tet_testlist	tet_testlist[];
-#ifdef __STDC__
 extern	int 	unexp_err(Display *d, XErrorEvent *ev);
 extern	int 	io_err(Display *d);
-#else
-extern	int 	unexp_err();
-extern	int 	io_err();
-#endif
 
 	/*
 	 * Set the debug level first (it is used in initconfig).

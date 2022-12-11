@@ -42,10 +42,6 @@ MODIFICATIONS:
 typedef int pid_t;
 #endif
 
-#ifndef __STDC__
-#include <time.h>
-#include <varargs.h>
-#endif
 #if defined(TET_THREADS) && !defined(TET_POSIX_THREADS)
 #include <synch.h>
 #endif
@@ -139,14 +135,8 @@ struct tet_synmsg *msgp;
 	return 0;
 }
 
-#ifdef __STDC__
 /* PRINTFLIKE1 */ /* VARARGS1 */
 int tet_printf(char *format, ...)
-#else
-/* PRINTFLIKE1 */ /* VARARGS1 */
-int tet_printf(format)
-char *format;
-#endif
 {
 	return 0;
 }

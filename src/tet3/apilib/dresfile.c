@@ -164,11 +164,7 @@ MODIFICATIONS:
 ************************************************************************/
 
 #include <stdlib.h>
-#if defined (__STDC__) || defined (_WIN32)
 #  include <stdarg.h>
-#else
-#  include <varargs.h>
-#endif
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -703,7 +699,6 @@ va_list ap;
 **		combined results file
 */
 
-#if defined (__STDC__) || defined (_WIN32)
 TET_IMPORT int tet_printf(char *format, ...)
 {
 	int rval;
@@ -715,22 +710,6 @@ TET_IMPORT int tet_printf(char *format, ...)
 
 	return rval;
 }
-#else /* !(__STDC__ || _WIN32) */
-TET_IMPORT int tet_printf(va_alist)
-va_dcl
-{
-	char *format;
-	int rval;
-	va_list ap;
-
-	va_start(ap);
-	format = va_arg(ap, char *);
-	rval = tet_vprintf(format, ap);
-	va_end(ap);
-
-	return rval;
-}
-#endif /* !(__STDC__ || _WIN32) */
 
 /*
 **	tet_result() - send a test purpose result to XRESD or tmpfile

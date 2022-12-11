@@ -126,11 +126,7 @@ purpose.  It is provided "as is" without express or implied warranty.
 #include	"pixval.h"
 #include	"XstlibInt.h"
 
-#ifdef __STDC__
 #include <stdarg.h>
-#else
-#include <varargs.h>
-#endif
 
 #define	LINELEN	1024
 
@@ -153,22 +149,12 @@ extern	int 	tet_thistest;
 /*VARARGS1*/
 
 void
-#ifdef __STDC__
 delete(char *mess, ... )
-#else
-delete(mess, va_alist)
-char	*mess;
-va_dcl
-#endif
 {
 char	buf[LINELEN];
 va_list args;
 
-#ifdef __STDC__
 	va_start(args, mess);
-#else
-	va_start(args);
-#endif
 
 	Xst_delete_count++;
 
