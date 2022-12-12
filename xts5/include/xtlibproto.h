@@ -116,6 +116,10 @@ purpose.  It is provided "as is" without express or implied warranty.
 #include <X11/extensions/XInput.h>
 #endif
 
+#ifdef XTESTEXTENSION
+#include <X11/extensions/XTest.h>
+#endif
+
 void startup(void);
 void cleanup(void);
 void fontstartup(void);
