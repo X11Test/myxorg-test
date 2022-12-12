@@ -70,10 +70,13 @@ SOFTWARE.
 #include <stdio.h>
 #include <stdlib.h>
 #ifdef INPUTEXTENSION
-#include "X11/extensions/XIproto.h"
-#include "X11/extensions/XInput.h"
+#include <X11/Xlib.h>
+#include <X11/extensions/XIproto.h>
+#include <X11/extensions/XInput.h>
 #include "XItest.h"
 #include "tet_api.h"
+
+#include "xtestlib.h"
 
 static XEventClass propclasses[32];
 static XDevice *baddev, *testdev;
